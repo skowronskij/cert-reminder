@@ -1,0 +1,13 @@
+{
+    "URLS": ["google.com"],
+
+    "DAYS_BUFFER": 3,
+
+    "WEBHOOK_URLS": [],
+
+    "MESSAGE": "{url} certificate expires in {days_left} days",
+
+    "CRON_SCHEDULE": "0 0 * * *",
+
+    "PYTHON_PATH": "/usr/bin/python3"
+}
