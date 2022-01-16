@@ -20,7 +20,11 @@ def get_certificate_expiration_date(host: str, port: int = 443) -> str:
         socket.socket(socket.AF_INET),
         server_hostname=host
     )
-    conn.connect((host, port))
+    try:
+        conn.connect((host, port))
+    except Exception as e:
+        print(f'Error connecting to {host}: {e}')
+        return 
     certificate = conn.getpeercert()
     return certificate['notAfter']
 
@@ -53,7 +57,7 @@ def run_cert_reminder(urls: List[str], message: str, days_buffer: int, webhook_u
     :param days_buffer: int
     :param webhook_urls: List[str]
     :return: None
-    """        
+    """
     print('--------------------------------------------')
     print('-* Checking certificates expiration dates *-')
     print('--------------------------------------------')
@@ -63,14 +67,20 @@ def run_cert_reminder(urls: List[str], message: str, days_buffer: int, webhook_u
         print(f'Checking {url}...')
 
         cert_expiration_date = get_certificate_expiration_date(url)
+
+        if not cert_expiration_date:
+            print('--------------------------------------------')
+            continue
+
         print(f'Certificate expiration date: {cert_expiration_date}')
-        
+
         days_left = check_certificate_days_left(cert_expiration_date)
         if cert_is_about_to_expire(days_left, days_buffer):
-            
+
             print(f'{url} is about to expire!\nTime left: {days_left}')
 
-            formated_message = message.format(url=url, days_left=days_left.days)
+            formated_message = message.format(
+                url=url, days_left=days_left.days)
             send_webhook_messages(formated_message, webhook_urls)
 
         print('--------------------------------------------')
