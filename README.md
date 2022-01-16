@@ -23,8 +23,8 @@ If running without docker:
 | --settings       | -             | Settings json path. If settings file is defined - ignore other args         | False    |
 | --no-init-messag | -             | Don't send initial webhook message                                          | False    |
 | --cronjob        | -             | Add cronjob to crontab                                                      | False    |
-|                  | CRON_SCHEDULE | Cron schedule strin. Default _"0 0 \* \* \*"_                               | False    |
-|                  | PYTHON_PATH   | Python path. Default _"python3"_                                            | False    |
+| -                | CRON_SCHEDULE | Cron schedule strin. Default _"0 0 \* \* \*"_                               | False    |
+| -                | PYTHON_PATH   | Python path. Default _"python3"_                                            | False    |
 
 ### Run examples without docker
 
