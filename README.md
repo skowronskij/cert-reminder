@@ -14,15 +14,15 @@ If running without docker:
 
 #### Parameters
 
-| Script arg | Settings key | Description | Required |
-| ------------ | ------------ | ------------ | |
-| --settings | - | Settings json path. If settings file is defined - ignore other args | False |
-|--urls|URLS| List of domains to check. | True|
-|--days_buffer| DAYS_BUFFER | Number of days left defining "about to expire" |True|
-|--webhook_urls| WEBHOOK_URLS |List of webhook urls | False |
-| --message | MESSAGE | Preformated webhook message. Use {days_left} and {url} to fill information. | False |
-| --no-init-messag | - | Don't send initial webhook message | False |
-| --cronjob | - | Preformated webhook message. Use {days_left} and {url} to fill information. | False |
+| Script arg       | Settings key | Description                                                                 | Required |
+| ---------------- | ------------ | --------------------------------------------------------------------------- | -------- |
+| --settings       | -            | Settings json path. If settings file is defined - ignore other args         | False    |
+| --urls           | URLS         | List of domains to check.                                                   | True     |
+| --days_buffer    | DAYS_BUFFER  | Number of days left defining "about to expire"                              | True     |
+| --webhook_urls   | WEBHOOK_URLS | List of webhook urls                                                        | False    |
+| --message        | MESSAGE      | Preformated webhook message. Use {days_left} and {url} to fill information. | False    |
+| --no-init-messag | -            | Don't send initial webhook message                                          | False    |
+| --cronjob        | -            | Preformated webhook message. Use {days_left} and {url} to fill information. | False    |
 
 ### Run examples without docker
 
