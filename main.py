@@ -16,10 +16,6 @@ parser.add_argument('--message', '-m', type=str, help='Message text to send')
 parser.add_argument('--no-message', '-nm', action='store_true', help='Do not send a webhook message')
 
 parser.add_argument('--cronjob', '-c', action='store_true', help='Set cronjob')
-parser.add_argument('--cron_schedule', '-cs', type=str, help='Cron schedule')
-parser.add_argument('--python_path', '-p', type=str, help='Python path')
-
-
 
 args = parser.parse_args()
 
@@ -30,6 +26,7 @@ def get_or_create_settings() -> dict:
     :return: dict
     """
     if args.settings:
+        print('Reading settings from file. Ignore other arguments.')
         settings_path = args.settings
         return read_settings(settings_path)
     else:
@@ -47,11 +44,6 @@ def get_or_create_settings() -> dict:
         if args.webhook_urls:
             settings['WEBHOOK_URLS'] = args.webhook_urls
 
-        if args.cron_schedule:
-            settings['CRON_SCHEDULE'] = args.cron_schedule
-
-        if args.python_path:
-            settings['PYTHON_PATH'] = args.python_path
 
         return settings
 
